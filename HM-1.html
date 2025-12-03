@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title> HM-1</title>
+  <style>
+    body{font-family:Tahoma,Arial;background:#f5f7fb;color:#222;padding:30px;direction:rtl}
+    header{display:flex;justify-content:space-between;align-items:center}
+    .card{background:#fff;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(15,20,30,.06);max-width:700px;margin-top:18px}
+    button{padding:8px 12px;border:none;border-radius:6px;cursor:pointer}
+    .count{font-weight:700}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>مثال صفحة HTML</h1>
+    <button id="themeBtn">تبديل الخلفية</button>
+  </header>
+
+  <div class="card">
+    <p id="greet">اضغط الزر للترحيب</p>
+    <input id="nameInput" placeholder="اكتب اسمك" />
+    <button id="sayHi">قل مرحباً</button>
+    <p>النقرة: <span class="count" id="clickCount">0</span></p>
+  </div>
+
+  <script>
+    const themeBtn = document.getElementById('themeBtn');
+    const sayHi = document.getElementById('sayHi');
+    const nameInput = document.getElementById('nameInput');
+    const greet = document.getElementById('greet');
+    const clickCount = document.getElementById('clickCount');
+    let clicks = 0, dark=false;
+
+    themeBtn.addEventListener('click', ()=>{
+      dark = !dark;
+      document.body.style.background = dark? '#1f2937' : '#f5f7fb';
+      document.body.style.color = dark? '#e6eef8' : '#222';
+    });
+
+    sayHi.addEventListener('click', ()=>{
+      const name = nameInput.value.trim() || 'صديقي';
+      greet.textContent = `مرحبًا ${name}، نتمنى لك يومًا رائعًا!`;
+      clicks++; clickCount.textContent = clicks;
+    });
+  </script>
+</body>
+</html>
